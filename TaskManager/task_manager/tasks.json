@@ -1,0 +1,20 @@
+{
+	"test_hardware_task": {
+		"std_id": "1023",
+		"ext_id": "262143",
+		"task_type": "HARDWARE",
+		"class_name": "test"
+	},
+	"test_software_task": {
+		"std_id": "1023",
+		"ext_id": "262142",
+		"task_type": "SOFTWARE",
+		"class_name": "test"
+	},
+	"alert_accelerometer": {
+		"std_id": "3",
+		"ext_id": "1",
+		"task_type": "SOFTWARE",
+		"class_name": "send_mail_alert"
+	}
+}
