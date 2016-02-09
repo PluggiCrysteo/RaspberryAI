@@ -1,6 +1,6 @@
 import requests,json
 
-PATH_TO_CREDITENTIALS = "../../../tools/mailgun_creditentials.json"
+PATH_TO_CREDITENTIALS = "./tools/mailgun_creditentials.json"
 
 class send_mail_alert:
 

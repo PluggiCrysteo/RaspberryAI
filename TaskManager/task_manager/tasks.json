@@ -13,7 +13,7 @@
 	},
 	"alert_accelerometer": {
 		"std_id": "3",
-		"ext_id": "1",
+		"ext_id": "131073",
 		"task_type": "SOFTWARE",
 		"class_name": "send_mail_alert"
 	}

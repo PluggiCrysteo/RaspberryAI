@@ -21,7 +21,7 @@ def dynamic_import(module,class_):
 existing_tasks = []
 instances = []
 
-with open('tasks.json') as json_file:
+with open('./python/TaskManager/task_manager/tasks.json') as json_file:
     data = json.load(json_file)
     for uselesskey,json_dict in data.iteritems():
         existing_tasks.append(task.Task(json_dict))
