@@ -1,0 +1,44 @@
+{
+	"test_hardware_task": {
+		"std_id": "1023",
+		"ext_id": "262143",
+		"task_type": "HARDWARE",
+		"class_name": "test"
+	},
+	"test_software_task": {
+		"std_id": "1023",
+		"ext_id": "262142",
+		"task_type": "SOFTWARE",
+		"class_name": "test"
+	},
+	"alert_accelerometer": {
+		"std_id": "2",
+		"ext_id": "131073",
+		"task_type": "SOFTWARE",
+		"class_name": "accel_alert"
+	},
+	"alert_gyro": {
+		"std_id": "2",
+		"ext_id": "131074",
+		"task_type": "SOFTWARE",
+		"class_name": "gyro_alert"
+	},
+	"pouet": {
+		"std_id": "1016",
+		"ext_id": "131074",
+		"task_type": "SOFTWARE",
+		"class_name": "pouet_sound"
+	},
+	"move_cam": {
+		"std_id": "16",
+		"ext_id": "131074",
+		"task_type": "SOFTWARE",
+		"class_name": "move_cam"
+	},
+	"play_sound": {
+		"std_id": "16",
+		"ext_id": "131075",
+		"task_type": "SOFTWARE",
+		"class_name": "play_sound"
+	}
+}

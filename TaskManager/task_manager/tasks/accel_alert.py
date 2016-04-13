@@ -1,8 +1,12 @@
-import requests,json
+import requests,json,vlc
 
-PATH_TO_CREDITENTIALS = "../../../tools/mailgun_creditentials.json"
+PATH_TO_CREDITENTIALS = "./tools/mailgun_creditentials.json"
+PATH_TO_ALERT = "/home/crysteo/content/DANGEEER.wav"
 
-class send_mail_alert:
+class accel_alert:
+
+        def __init__(self,fifo_callback):
+            self.callback = fifo_callback
 
 	def execute(self,data):
 		with open(PATH_TO_CREDITENTIALS) as json_cred:
@@ -12,5 +16,6 @@ class send_mail_alert:
 		    		'from': 'Pluggi <crysteo@isen-lille.fr>',
 				'to': dict_['recipient'],
 				'subject': 'Help !',
-				'text': 'Someone hit me !'
+				'text': 'Someone hit me !\nAccelerometer alert.'
 			})
+                vlc.MediaPlayer(PATH_TO_ALERT).play()
