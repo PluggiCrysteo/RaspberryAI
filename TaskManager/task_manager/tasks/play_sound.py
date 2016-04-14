@@ -36,4 +36,6 @@ class play_sound:
         if data[1] in sounds and not self.player.is_playing():
             self.player = vlc.MediaPlayer(PATH_TO_SOUNDS + sounds[data[1]].get_next_sound())
             self.player.play()
+        randomdata = [ '1','2','3','4' ]
+        self.callback(42,randomdata)
 

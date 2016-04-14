@@ -16,17 +16,22 @@ if len(sys.argv) < 3:
                  arg1: can_socket path, arg2: user_fifo path")
     exit()
 
-can_socket_fd = None  # just so it's not undefined
+class message_sender:
+    def set_fd(self,fd):
+        self.fd = fd
 
+    def send_can_message(self,extid, data):
+        tosend = str(extid)
+        for byte in data:
+            tosend += ";" + str(byte)
+        logger.debug("writing to the can_server:")
+        logger.debug(tosend)
+        self.fd.write(tosend + "\n")
 
-def send_can_message(extid, data):
-    tosend = str(extid)
-    for byte in data:
-        tosend += ";" + str(byte)
-        can_socket_fd.write(tosend + "\n")
+sender = message_sender()
 
-existing_can_tasks = tools.init_can_tasks(send_can_message)
-existing_user_tasks = tools.init_user_tasks(send_can_message)
+existing_can_tasks = tools.init_can_tasks(sender.send_can_message)
+existing_user_tasks = tools.init_user_tasks(sender.send_can_message)
 
 # TODO shouldn't have refractored this actually
 def user_tasks_polling(can_socket_fd):
@@ -79,6 +84,7 @@ if __name__ == "__main__":
     logger.debug("main started")
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     sock.connect(sys.argv[1])
-    can_socket = sock.makefile()
+    can_socket = sock.makefile('rw',0)
+    sender.set_fd(can_socket)
     threading.Thread(target=can_tasks_polling, args=(can_socket,)).start()
 #   user_tasks_polling()
