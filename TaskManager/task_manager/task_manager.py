@@ -28,7 +28,7 @@ def send_can_message(extid, data):
 existing_can_tasks = tools.init_can_tasks(send_can_message)
 existing_user_tasks = tools.init_user_tasks(send_can_message)
 
-
+# TODO shouldn't have refractored this actually
 def user_tasks_polling(can_socket_fd):
     logger.debug("receive-FIFO opened.")
     while(True):
@@ -53,7 +53,6 @@ def user_tasks_polling(can_socket_fd):
 
 
 def can_tasks_polling(can_socket_fd):
-    logger.debug("receive-FIFO opened.")
     while(True):
         split = can_socket_fd.readline().split(";")
         if len(split) < 2:
@@ -73,7 +72,7 @@ def can_tasks_polling(can_socket_fd):
                     break
 #                elif existing_task.task_type == 'HARDWARE':
 
-    logger.error("receive-FIFO closed")
+    logger.error("can_unix_socket closed")
 
 
 if __name__ == "__main__":
