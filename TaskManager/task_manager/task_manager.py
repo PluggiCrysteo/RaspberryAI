@@ -79,6 +79,7 @@ def can_tasks_polling(can_socket_fd):
 if __name__ == "__main__":
     logger.debug("main started")
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    can_socket = sock.connect(sys.argv[1]).makefile()
-    threading.Thread(target=can_tasks_polling, params=(can_socket,)).start()
+    sock.connect(sys.argv[1])
+    can_socket = sock.makefile()
+    threading.Thread(target=can_tasks_polling, args=(can_socket,)).start()
 #   user_tasks_polling()
